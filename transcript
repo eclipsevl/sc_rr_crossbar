@@ -1,0 +1,99 @@
+# //  ModelSim SE 10.1c Jul 27 2012 
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# vsim -do {do wave.do run -all} -novopt tb 
+# Refreshing D:/sc/work.tb
+# Loading work.tb
+# Refreshing D:/sc/work.sc_sys_core
+# Loading work.sc_sys_core
+# Refreshing D:/sc/work.sc_rr_crossbar
+# Loading work.sc_rr_crossbar
+# Refreshing D:/sc/work.sc_rr_crossbar_arbiter
+# Loading work.sc_rr_crossbar_arbiter
+# Refreshing D:/sc/work.sc_rr_crossbar_arbiter_atom
+# Loading work.sc_rr_crossbar_arbiter_atom
+# Refreshing D:/sc/work.sc_rr_crossbar_tristate_buffer
+# Loading work.sc_rr_crossbar_tristate_buffer
+# Refreshing D:/sc/work.sc_master_dev
+# Loading work.sc_master_dev
+# Refreshing D:/sc/work.sc_slave_dev
+# Loading work.sc_slave_dev
+# do wave.do run -all 
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: eclipsevl  Hostname: ECLIPSEVL-ой  ProcessID: 29172
+# 
+#           Attempting to use alternate WLF file "./wlft5n6agv".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlft5n6agv
+# 
+run -all
+# ** Warning: (vsim-7) Failed to open readmem file "slave0.txt" in read mode.
+# 
+# No such file or directory. (errno = ENOENT)    : ./sc_slave_dev.v(31)
+#    Time: 0 ps  Iteration: 0  Instance: /tb/xi_sys_core/xi_sl_dev_0
+# ** Warning: (vsim-7) Failed to open readmem file "slave1.txt" in read mode.
+# 
+# No such file or directory. (errno = ENOENT)    : ./sc_slave_dev.v(31)
+#    Time: 0 ps  Iteration: 0  Instance: /tb/xi_sys_core/xi_sl_dev_1
+#                 2000: reset released. Waiting for finish time.
+# master0.txt:                 2150, write command, addr: 0x00000001, data: 0x12345678
+# master1.txt:                 2150, write command, addr: 0x00000001, data: 0x12345678
+# master0.txt:                 2650, write command, addr: 0x00000002, data: 0x000000ff
+# master1.txt:                 3250, write command, addr: 0x00000002, data: 0x000000ff
+# master0.txt:                 3850, write command, addr: 0x00000003, data: 0x0000ff00
+# master1.txt:                 4450, write command, addr: 0x00000003, data: 0x0000ff00
+# master0.txt:                 5050, write command, addr: 0x00000004, data: 0x00ff0000
+# master1.txt:                 5650, write command, addr: 0x00000004, data: 0x00ff0000
+# master0.txt:                 6250, nop         16 cycles
+# master1.txt:                 6850, nop          5 cycles
+# master1.txt:                 7550, write command, addr: 0x00000010, data: 0x12345678
+# master0.txt:                 8050, write command, addr: 0x00000010, data: 0x12345678
+# master1.txt:                 8050, write command, addr: 0x00000020, data: 0x000000ff
+# master1.txt:                 8650, write command, addr: 0x00000030, data: 0x0000ff00
+# master0.txt:                 9250, write command, addr: 0x00000020, data: 0x000000ff
+# master1.txt:                 9850, write command, addr: 0x00000040, data: 0x00ff0000
+# master0.txt:                10450, write command, addr: 0x00000030, data: 0x0000ff00
+# master1.txt:                11050, read command, addr: 0x00000001, expected data: 0x12345678
+# master0.txt:                11650, write command, addr: 0x00000040, data: 0x00ff0000
+# master1.txt:                12150, readback: addr: 0x00000001, data: 0x12345678, expected: 0x12345678
+# master1.txt:                12250, nop         16 cycles
+# master0.txt:                12850, read command, addr: 0x00000001, expected data: 0x12345678
+# master0.txt:                13350, readback: addr: 0x00000001, data: 0x12345678, expected: 0x12345678
+# master0.txt:                13450, nop         16 cycles
+# master1.txt:                14050, write command, addr: 0x80000001, data: 0x12345678
+# master1.txt:                14550, write command, addr: 0x80000002, data: 0x000000ff
+# master1.txt:                15150, write command, addr: 0x80000003, data: 0x0000ff00
+# master0.txt:                15250, write command, addr: 0x00000001, data: 0x12345678
+# master0.txt:                15750, write command, addr: 0x00000002, data: 0x000000ff
+# master1.txt:                15750, write command, addr: 0x80000004, data: 0x00ff0000
+# master0.txt:                16350, write command, addr: 0x00000003, data: 0x0000ff00
+# master1.txt:                16350, nop         16 cycles
+# master0.txt:                16950, write command, addr: 0x00000004, data: 0x00ff0000
+# master0.txt:                17550, nop         16 cycles
+# master1.txt:                18150, write command, addr: 0x80000010, data: 0x12345678
+# master1.txt:                18650, write command, addr: 0x80000020, data: 0x000000ff
+# master1.txt:                19250, write command, addr: 0x80000030, data: 0x0000ff00
+# master0.txt:                19350, write command, addr: 0x00000010, data: 0x12345678
+# master0.txt:                19850, write command, addr: 0x00000020, data: 0x000000ff
+# master1.txt:                19850, write command, addr: 0x80000040, data: 0x00ff0000
+# master0.txt:                20450, write command, addr: 0x00000030, data: 0x0000ff00
+# master1.txt:                20450, read command, addr: 0x80000001, expected data: 0x12345678
+# master1.txt:                20950, readback: addr: 0x80000001, data: 0x12345678, expected: 0x12345678
+# master0.txt:                21050, write command, addr: 0x00000040, data: 0x00ff0000
+# master1.txt:                21050, end of file
+# master0.txt:                21650, read command, addr: 0x00000001, expected data: 0x12345678
+# master0.txt:                22150, readback: addr: 0x00000001, data: 0x12345678, expected: 0x12345678
+# master0.txt:                22350, end of file
+#               102000: end of test
+# ** Note: $finish    : ./tb.v(22)
+#    Time: 10200 ns  Iteration: 0  Instance: /tb
+# 1
+# Break in Module tb at ./tb.v line 22
