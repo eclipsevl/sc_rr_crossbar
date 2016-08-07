@@ -1,5 +1,8 @@
-`include "timing_inc.vh"
+// round-robin cross bar testbench
+// Vladislav Knyazkov, Aug 2016
+// contact@eclipsevl.org
 
+`include "timing_inc.vh"
 `define FSM_IDLE            4'b0000
 `define FSM_READ            4'b0001
 `define FSM_NOP             4'b0010

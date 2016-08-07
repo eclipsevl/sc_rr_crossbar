@@ -1,3 +1,7 @@
+// round-robin cross bar
+// Vladislav Knyazkov, Aug 2016
+// contact@eclipsevl.org
+
 `include "timing_inc.vh"
 
 module sc_rr_crossbar_arbiter
