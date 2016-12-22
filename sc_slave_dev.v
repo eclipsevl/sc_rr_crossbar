@@ -57,16 +57,16 @@ module sc_slave_dev
             end
             
             // proceed request
-            if(r_req) begin
+            if(i_req) begin
                 // write
-                if(r_cmd) begin
-                    ram[r_addr] <= r_wdata;
+                if(i_cmd) begin
+                    ram[i_addr] <= #1 i_wdata;
                     r_ack       <= #1 1'b1;
                 end 
                 else
                 // read
                 begin
-                    r_rdata     <= #1 ram[r_addr];
+                    r_rdata     <= #1 ram[i_addr];
                     r_ack       <= #1 1'b1;
                 end
             end

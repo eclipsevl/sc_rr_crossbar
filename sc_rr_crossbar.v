@@ -77,81 +77,42 @@ sc_rr_crossbar_arbiter xi_arbiter
         .o_m1_wait  ()
     );
 
-// crossbar matrix
-sc_rr_crossbar_tristate_buffer xi_m0s0_buf
-    (
-        .i_enable   (w_m0s0_enable),
-        
-        .o_req      (o_slave_0_req),
-        .o_addr     (o_slave_0_addr),
-        .o_cmd      (o_slave_0_cmd),
-        .o_wdata    (o_slave_0_wdata),
-        .i_ack      (i_slave_0_ack),
-        .i_rdata    (i_slave_0_rdata),
-        
-        .i_req      (i_master_0_req),
-        .i_addr     (i_master_0_addr),
-        .i_cmd      (i_master_0_cmd),
-        .i_wdata    (i_master_0_wdata),
-        .o_ack      (o_master_0_ack),
-        .o_rdata    (o_master_0_rdata)
-    );
-    
-sc_rr_crossbar_tristate_buffer xi_m0s1_buf
-    (
-        .i_enable   (w_m0s1_enable),
-        
-        .o_req      (o_slave_1_req),
-        .o_addr     (o_slave_1_addr),
-        .o_cmd      (o_slave_1_cmd),
-        .o_wdata    (o_slave_1_wdata),
-        .i_ack      (i_slave_1_ack),
-        .i_rdata    (i_slave_1_rdata),
-        
-        .i_req      (i_master_0_req),
-        .i_addr     (i_master_0_addr),
-        .i_cmd      (i_master_0_cmd),
-        .i_wdata    (i_master_0_wdata),
-        .o_ack      (o_master_0_ack),
-        .o_rdata    (o_master_0_rdata)
-    );
+wire w_cross_connect = w_m0s1_enable | w_m1s0_enable;
 
-sc_rr_crossbar_tristate_buffer xi_m1s0_buf
+// crossbar matrix
+sc_rr_crossbar_matrix xi_matrix
     (
-        .i_enable   (w_m1s0_enable),
+        .i_cross_connect (w_cross_connect),
+		.i_sl_0_connect  (w_m0s0_enable | w_m1s0_enable),
+		.i_sl_1_connect  (w_m0s1_enable | w_m1s1_enable),
         
-        .o_req      (o_slave_0_req),
-        .o_addr     (o_slave_0_addr),
-        .o_cmd      (o_slave_0_cmd),
-        .o_wdata    (o_slave_0_wdata),
-        .i_ack      (i_slave_0_ack),
-        .i_rdata    (i_slave_0_rdata),
-        
-        .i_req      (i_master_1_req),
-        .i_addr     (i_master_1_addr),
-        .i_cmd      (i_master_1_cmd),
-        .i_wdata    (i_master_1_wdata),
-        .o_ack      (o_master_1_ack),
-        .o_rdata    (o_master_1_rdata)
-    );
-    
-sc_rr_crossbar_tristate_buffer xi_m1s1_buf
-    (
-        .i_enable   (w_m1s1_enable),
-        
-        .o_req      (o_slave_1_req),
-        .o_addr     (o_slave_1_addr),
-        .o_cmd      (o_slave_1_cmd),
-        .o_wdata    (o_slave_1_wdata),
-        .i_ack      (i_slave_1_ack),
-        .i_rdata    (i_slave_1_rdata),
-        
-        .i_req      (i_master_1_req),
-        .i_addr     (i_master_1_addr),
-        .i_cmd      (i_master_1_cmd),
-        .i_wdata    (i_master_1_wdata),
-        .o_ack      (o_master_1_ack),
-        .o_rdata    (o_master_1_rdata)
+        .o_req_sl_0      (o_slave_0_req),
+        .o_addr_sl_0     (o_slave_0_addr),
+        .o_cmd_sl_0      (o_slave_0_cmd),
+        .o_wdata_sl_0    (o_slave_0_wdata),
+        .i_ack_sl_0      (i_slave_0_ack),
+        .i_rdata_sl_0    (i_slave_0_rdata),
+ 
+        .o_req_sl_1      (o_slave_1_req),
+        .o_addr_sl_1     (o_slave_1_addr),
+        .o_cmd_sl_1      (o_slave_1_cmd),
+        .o_wdata_sl_1    (o_slave_1_wdata),
+        .i_ack_sl_1      (i_slave_1_ack),
+        .i_rdata_sl_1    (i_slave_1_rdata),
+		
+        .i_req_ms_0      (i_master_0_req),
+        .i_addr_ms_0     (i_master_0_addr),
+        .i_cmd_ms_0      (i_master_0_cmd),
+        .i_wdata_ms_0    (i_master_0_wdata),
+        .o_ack_ms_0      (o_master_0_ack),
+        .o_rdata_ms_0    (o_master_0_rdata),
+
+        .i_req_ms_1      (i_master_1_req),
+        .i_addr_ms_1     (i_master_1_addr),
+        .i_cmd_ms_1      (i_master_1_cmd),
+        .i_wdata_ms_1    (i_master_1_wdata),
+        .o_ack_ms_1      (o_master_1_ack),
+        .o_rdata_ms_1    (o_master_1_rdata)
     );
     
 endmodule
